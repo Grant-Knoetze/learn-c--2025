@@ -2,7 +2,7 @@
 // String length can also refer to the number of bytes in the string
 // One character usually equals one byte except with unicode and multi-byte characters
 #include <iostream>
-#include <cstring> // For strcpy
+#include <cstring> // For strcpy, strcat etc
 using namespace std;
 
 int main()
@@ -14,8 +14,12 @@ int main()
       "word1" has 5 characters ('w', 'o', 'r', 'd', '1'), but the compiler adds a null terminator ('\0') at the end to mark the end of the string. 
       So, the total size of string1 is 6 bytes.*/
     char result[160];
-    strcpy_s(result, string1);
-    cout << "string1\n";
+    strcpy_s(result, string1); // Add word to the result string.
+    strcat_s(result, " "); // Add a space between the 2 words.
+    strcat_s(result, string2); // Concatenate word2 to the result.
+    int lengthOfString{ -1 }; // If anything goes wrong we will know since the value will be "-1"
+    lengthOfString = strlen(result); // Set the length of our result string to this variable.
+    cout << result<<"\n"<<"Length of string is " << lengthOfString<<"\n"; // Display the value of the result string and its length.
 
 
     using namespace std;
